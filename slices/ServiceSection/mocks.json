@@ -1,0 +1,65 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "fastened",
+				"type": "Text"
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim cillum velit non tempor nisi dolore qui do. Commodo proident labore exercitation ullamco. Incididunt in adipisicing proident magna eiusmod esse tempor ad anim esse minim irure exercitation velit."
+						}
+					}
+				]
+			},
+			"service_items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"icon",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "sun",
+									"type": "Text"
+								}
+							],
+							[
+								"service_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "camera",
+									"type": "Text"
+								}
+							],
+							[
+								"service_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "In labore ullamco minim ad esse duis sit aliquip. Anim consectetur laborum dolor Lorem velit duis sunt voluptate cupidatat occaecat aliquip sint commodo quis. Aute nulla quis est cillum et nisi minim eiusmod ex do."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

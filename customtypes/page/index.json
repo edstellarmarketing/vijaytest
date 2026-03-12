@@ -32,7 +32,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "service_section": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

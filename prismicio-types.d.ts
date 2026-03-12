@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type PageDocumentDataSlicesSlice = never;
+type PageDocumentDataSlicesSlice = ServiceSectionSlice;
 
 /**
  * Content for Page documents
@@ -154,6 +154,108 @@ export type PageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes = PageDocument;
 
+/**
+ * Item in *ServiceSection → Default → Primary → Service Items*
+ */
+export interface ServiceSectionSliceDefaultPrimaryServiceItemsItem {
+  /**
+   * Icon field in *ServiceSection → Default → Primary → Service Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_section.default.primary.service_items[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  icon: prismic.KeyTextField;
+
+  /**
+   * Service Title field in *ServiceSection → Default → Primary → Service Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_section.default.primary.service_items[].service_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  service_title: prismic.KeyTextField;
+
+  /**
+   * Service Description field in *ServiceSection → Default → Primary → Service Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_section.default.primary.service_items[].service_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  service_description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ServiceSection → Default → Primary*
+ */
+export interface ServiceSectionSliceDefaultPrimary {
+  /**
+   * Section Title field in *ServiceSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_section.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *ServiceSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_section.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Service Items field in *ServiceSection → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_section.default.primary.service_items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  service_items: prismic.GroupField<
+    Simplify<ServiceSectionSliceDefaultPrimaryServiceItemsItem>
+  >;
+}
+
+/**
+ * Default variation for ServiceSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServiceSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServiceSection*
+ */
+type ServiceSectionSliceVariation = ServiceSectionSliceDefault;
+
+/**
+ * ServiceSection Shared Slice
+ *
+ * - **API ID**: `service_section`
+ * - **Description**: ServiceSection
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceSectionSlice = prismic.SharedSlice<
+  "service_section",
+  ServiceSectionSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -179,6 +281,11 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      ServiceSectionSlice,
+      ServiceSectionSliceDefaultPrimaryServiceItemsItem,
+      ServiceSectionSliceDefaultPrimary,
+      ServiceSectionSliceVariation,
+      ServiceSectionSliceDefault,
     };
   }
 }
