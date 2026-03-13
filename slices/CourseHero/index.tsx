@@ -12,8 +12,8 @@ export default function CourseHero({ slice }: CourseHeroProps) {
       display: "flex",
       alignItems: "center",
       background: "#1a237e",
-      overflow: "hidden",
-      padding: "60px 5vw",
+      overflow: "visible",
+      padding: "60px 20px",
     }}>
       {/* Background Image */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
