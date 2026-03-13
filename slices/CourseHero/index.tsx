@@ -13,7 +13,7 @@ export default function CourseHero({ slice }: CourseHeroProps) {
       alignItems: "center",
       background: "#1a237e",
       overflow: "hidden",
-      padding: "60px 80px",
+      padding: "60px 5vw",
     }}>
       {/* Background Image */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
@@ -25,11 +25,11 @@ export default function CourseHero({ slice }: CourseHeroProps) {
       </div>
 
       {/* Content */}
-      <div style={{ position: "relative", zIndex: 1, maxWidth: "620px" }}>
+      <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: "620px" }}>
 
         {/* Title */}
         <h1 style={{
-          fontSize: "clamp(28px, 3.5vw, 44px)",
+          fontSize: "clamp(24px, 4vw, 44px)",
           fontWeight: 800,
           lineHeight: 1.2,
           marginBottom: "16px",
@@ -44,36 +44,54 @@ export default function CourseHero({ slice }: CourseHeroProps) {
         {/* Description */}
         <div style={{
           color: "rgba(255,255,255,0.85)",
-          fontSize: "14px",
+          fontSize: "clamp(13px, 1.5vw, 15px)",
           lineHeight: 1.75,
           marginBottom: "28px",
           fontFamily: "Arial, sans-serif",
-          maxWidth: "560px",
         }}>
           <PrismicRichText field={slice.primary.description} />
         </div>
 
         {/* Stats Box */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 2fr 1.5fr",
-          gap: "0",
-          background: "rgba(255,255,255,0.08)",
-          border: "1px solid rgba(255,255,255,0.15)",
-          borderRadius: "8px",
-          padding: "16px 24px",
-          marginBottom: "28px",
-          maxWidth: "560px",
-        }}>
-          <div style={{ borderRight: "1px solid rgba(255,255,255,0.15)", paddingRight: "20px" }}>
+        <style>{`
+          .stats-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+          }
+          .stat-item {
+            flex: 1;
+            min-width: 120px;
+          }
+          .stat-item + .stat-item {
+            border-left: 1px solid rgba(255,255,255,0.15);
+            padding-left: 16px;
+          }
+          @media (max-width: 480px) {
+            .stat-item + .stat-item {
+              border-left: none;
+              padding-left: 0;
+              border-top: 1px solid rgba(255,255,255,0.15);
+              padding-top: 12px;
+            }
+          }
+        `}</style>
+
+        <div className="stats-box">
+          <div className="stat-item">
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "11px", marginBottom: "6px", marginTop: 0 }}>⏱ Duration</p>
             <p style={{ color: "#fff", fontWeight: 700, fontSize: "14px", margin: 0 }}>{slice.primary.duration as string}</p>
           </div>
-          <div style={{ borderRight: "1px solid rgba(255,255,255,0.15)", paddingLeft: "20px", paddingRight: "20px" }}>
+          <div className="stat-item">
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "11px", marginBottom: "6px", marginTop: 0 }}>🖥 Delivery Type</p>
             <p style={{ color: "#fff", fontWeight: 700, fontSize: "14px", margin: 0 }}>{slice.primary.delivery_type as string}</p>
           </div>
-          <div style={{ paddingLeft: "20px" }}>
+          <div className="stat-item">
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "11px", marginBottom: "6px", marginTop: 0 }}>🌐 Training Available in</p>
             <p style={{ color: "#fff", fontWeight: 700, fontSize: "14px", margin: 0 }}>{slice.primary.languages as string}</p>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "13px", margin: 0 }}>{slice.primary.locations as string}</p>
