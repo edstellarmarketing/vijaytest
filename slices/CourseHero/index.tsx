@@ -17,19 +17,18 @@ export default function CourseHero({ slice }: CourseHeroProps) {
           padding: 60px 80px;
           box-sizing: border-box;
           width: 100%;
+          overflow: hidden;
         }
         .course-hero-bg {
           position: absolute;
           inset: 0;
           z-index: 0;
-          overflow: hidden;
         }
         .course-hero-content {
           position: relative;
           z-index: 1;
           max-width: 620px;
           width: 100%;
-          overflow: hidden;
           box-sizing: border-box;
         }
         .course-hero h1 {
@@ -47,17 +46,15 @@ export default function CourseHero({ slice }: CourseHeroProps) {
           font-family: Arial, sans-serif;
           width: 100%;
           max-width: 560px;
-          overflow-wrap: break-word;
-          word-wrap: break-word;
-          word-break: normal;
-          white-space: normal;
           box-sizing: border-box;
+          overflow-wrap: break-word;
+          word-break: break-word;
+          white-space: normal;
         }
         .course-hero-desc p {
           margin: 0;
-          overflow-wrap: break-word;
-          word-wrap: break-word;
           white-space: normal;
+          overflow-wrap: break-word;
         }
         .stats-grid {
           display: flex;
@@ -90,7 +87,6 @@ export default function CourseHero({ slice }: CourseHeroProps) {
           font-size: 14px;
           margin: 0;
           overflow-wrap: break-word;
-          word-wrap: break-word;
         }
         .stat-sub {
           color: rgba(255,255,255,0.7);
