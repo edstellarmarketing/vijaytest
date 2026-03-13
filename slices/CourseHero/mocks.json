@@ -1,0 +1,110 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"background_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+					"width": 4000,
+					"height": 4000
+				},
+				"url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+				"width": 4000,
+				"height": 4000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "managed",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"course_title_white_1": {
+				"__TYPE__": "FieldContent",
+				"value": "arm",
+				"type": "Text"
+			},
+			"course_title_highlight": {
+				"__TYPE__": "FieldContent",
+				"value": "arrange",
+				"type": "Text"
+			},
+			"course_title_white_2": {
+				"__TYPE__": "FieldContent",
+				"value": "cut",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laborum fugiat esse est dolore duis aliqua aliquip consectetur eiusmod. Consequat enim exercitation proident velit ex elit id amet officia. Adipisicing ad voluptate do."
+						}
+					}
+				]
+			},
+			"duration": {
+				"__TYPE__": "FieldContent",
+				"value": "wing",
+				"type": "Text"
+			},
+			"delivery_type": {
+				"__TYPE__": "FieldContent",
+				"value": "beat",
+				"type": "Text"
+			},
+			"languages": {
+				"__TYPE__": "FieldContent",
+				"value": "hospital",
+				"type": "Text"
+			},
+			"locations": {
+				"__TYPE__": "FieldContent",
+				"value": "production",
+				"type": "Text"
+			},
+			"course_outline_url": {
+				"key": "09facf4b-c693-4b2a-93e4-e20a8957bd12",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "start"
+				}
+			},
+			"enquire_url": {
+				"key": "2c07e215-8a3e-4c0b-9890-df3ccd39f61a",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "torn"
+				}
+			},
+			"bottom_link_text": {
+				"__TYPE__": "FieldContent",
+				"value": "pain",
+				"type": "Text"
+			},
+			"bottom_link_url": {
+				"__TYPE__": "LinkContent",
+				"key": "e0a4cd51-385b-4d79-a327-0e2004018c08",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "system"
+				}
+			}
+		},
+		"items": []
+	}
+]

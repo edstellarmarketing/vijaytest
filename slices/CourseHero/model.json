@@ -1,0 +1,125 @@
+{
+  "id": "course_hero",
+  "type": "SharedSlice",
+  "name": "CourseHero",
+  "description": "CourseHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "course_title_white_1": {
+          "type": "Text",
+          "config": {
+            "label": "Course Title White 1",
+            "placeholder": ""
+          }
+        },
+        "course_title_highlight": {
+          "type": "Text",
+          "config": {
+            "label": "Course Title Highlight",
+            "placeholder": ""
+          }
+        },
+        "course_title_white_2": {
+          "type": "Text",
+          "config": {
+            "label": "Course Title White 2",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "duration": {
+          "type": "Text",
+          "config": {
+            "label": "Duration",
+            "placeholder": ""
+          }
+        },
+        "delivery_type": {
+          "type": "Text",
+          "config": {
+            "label": "Delivery Type",
+            "placeholder": ""
+          }
+        },
+        "languages": {
+          "type": "Text",
+          "config": {
+            "label": "Languages",
+            "placeholder": ""
+          }
+        },
+        "locations": {
+          "type": "Text",
+          "config": {
+            "label": "Locations",
+            "placeholder": ""
+          }
+        },
+        "course_outline_url": {
+          "type": "Link",
+          "config": {
+            "label": "Course Outline URL",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "enquire_url": {
+          "type": "Link",
+          "config": {
+            "label": "Enquire URL",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "bottom_link_text": {
+          "type": "Text",
+          "config": {
+            "label": "Bottom Link Text",
+            "placeholder": ""
+          }
+        },
+        "bottom_link_url": {
+          "type": "Link",
+          "config": {
+            "label": "Bottom Link URL",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

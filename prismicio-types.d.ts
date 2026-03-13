@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type PageDocumentDataSlicesSlice = ServiceSectionSlice;
+type PageDocumentDataSlicesSlice = CourseHeroSlice | ServiceSectionSlice;
 
 /**
  * Content for Page documents
@@ -153,6 +153,189 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = PageDocument;
+
+/**
+ * Primary content in *CourseHero → Default → Primary*
+ */
+export interface CourseHeroSliceDefaultPrimary {
+  /**
+   * Background Image field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Course Title White 1 field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.course_title_white_1
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  course_title_white_1: prismic.KeyTextField;
+
+  /**
+   * Course Title Highlight field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.course_title_highlight
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  course_title_highlight: prismic.KeyTextField;
+
+  /**
+   * Course Title White 2 field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.course_title_white_2
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  course_title_white_2: prismic.KeyTextField;
+
+  /**
+   * Description field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Duration field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.duration
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  duration: prismic.KeyTextField;
+
+  /**
+   * Delivery Type field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.delivery_type
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  delivery_type: prismic.KeyTextField;
+
+  /**
+   * Languages field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.languages
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  languages: prismic.KeyTextField;
+
+  /**
+   * Locations field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.locations
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  locations: prismic.KeyTextField;
+
+  /**
+   * Course Outline URL field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.course_outline_url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  course_outline_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Enquire URL field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.enquire_url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  enquire_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Bottom Link Text field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.bottom_link_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  bottom_link_text: prismic.KeyTextField;
+
+  /**
+   * Bottom Link URL field in *CourseHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_hero.default.primary.bottom_link_url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  bottom_link_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Default variation for CourseHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CourseHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CourseHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CourseHero*
+ */
+type CourseHeroSliceVariation = CourseHeroSliceDefault;
+
+/**
+ * CourseHero Shared Slice
+ *
+ * - **API ID**: `course_hero`
+ * - **Description**: CourseHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CourseHeroSlice = prismic.SharedSlice<
+  "course_hero",
+  CourseHeroSliceVariation
+>;
 
 /**
  * Item in *ServiceSection → Default → Primary → Service Items*
@@ -281,6 +464,10 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CourseHeroSlice,
+      CourseHeroSliceDefaultPrimary,
+      CourseHeroSliceVariation,
+      CourseHeroSliceDefault,
       ServiceSectionSlice,
       ServiceSectionSliceDefaultPrimaryServiceItemsItem,
       ServiceSectionSliceDefaultPrimary,
