@@ -19,9 +19,6 @@ export default async function Page({
 
   return (
     <main>
-      <div style={{ padding: "40px", fontFamily: "Arial, sans-serif", color: "#fff", background: "#0a0a14" }}>
-        <h1>{page.data.page_title as string}</h1>
-      </div>
       <SliceZone slices={page.data.slices} components={components} />
     </main>
   );
