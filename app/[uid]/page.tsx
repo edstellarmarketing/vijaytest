@@ -1,6 +1,9 @@
 import { createClient } from "@/prismicio";
-import { PrismicRichText } from "@prismicio/react";
+import { SliceZone } from "@prismicio/react";
+import { components } from "@/slices";
 import { notFound } from "next/navigation";
+
+export const revalidate = 60;
 
 export default async function Page({
   params,
@@ -15,9 +18,11 @@ export default async function Page({
     .catch(() => notFound());
 
   return (
-    <main style={{ padding: "40px", fontFamily: "Arial, sans-serif" }}>
-      <h1>{page.data.page_title as string}</h1>
-      <PrismicRichText field={page.data.description} />
+    <main>
+      <div style={{ padding: "40px", fontFamily: "Arial, sans-serif", color: "#fff", background: "#0a0a14" }}>
+        <h1>{page.data.page_title as string}</h1>
+      </div>
+      <SliceZone slices={page.data.slices} components={components} />
     </main>
   );
 }
