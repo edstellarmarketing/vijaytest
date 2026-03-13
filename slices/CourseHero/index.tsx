@@ -22,12 +22,15 @@ export default function CourseHero({ slice }: CourseHeroProps) {
           position: absolute;
           inset: 0;
           z-index: 0;
+          overflow: hidden;
         }
         .course-hero-content {
           position: relative;
           z-index: 1;
           max-width: 620px;
           width: 100%;
+          overflow: hidden;
+          box-sizing: border-box;
         }
         .course-hero h1 {
           font-size: clamp(26px, 3.5vw, 44px);
@@ -42,10 +45,19 @@ export default function CourseHero({ slice }: CourseHeroProps) {
           line-height: 1.75;
           margin-bottom: 24px;
           font-family: Arial, sans-serif;
+          width: 100%;
           max-width: 560px;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          word-break: normal;
+          white-space: normal;
+          box-sizing: border-box;
         }
         .course-hero-desc p {
           margin: 0;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          white-space: normal;
         }
         .stats-grid {
           display: flex;
@@ -56,11 +68,13 @@ export default function CourseHero({ slice }: CourseHeroProps) {
           padding: 16px 0;
           margin-bottom: 28px;
           max-width: 560px;
+          box-sizing: border-box;
         }
         .stat-col {
           flex: 1;
           padding: 0 20px;
           border-right: 1px solid rgba(255,255,255,0.15);
+          min-width: 0;
         }
         .stat-col:last-child {
           border-right: none;
@@ -75,6 +89,8 @@ export default function CourseHero({ slice }: CourseHeroProps) {
           font-weight: 700;
           font-size: 14px;
           margin: 0;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
         }
         .stat-sub {
           color: rgba(255,255,255,0.7);
