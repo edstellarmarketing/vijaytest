@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edstellar — Off-Page Activity Plan (May 2026)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0e14; --bg-card: #131822; --bg-card-h: #1a2030; --bg-surface: #1d2435;
+    --border: #2a3242; --border-l: #3a4358;
+    --text: #ecedf3; --text-2: #9aa0b4; --text-m: #6b7286;
+    --accent: #5b8def; --accent-bg: rgba(91,141,239,0.10); --accent-br: rgba(91,141,239,0.30);
+    --green: #34d399; --green-bg: rgba(52,211,153,0.10); --green-br: rgba(52,211,153,0.30);
+    --amber: #fbbf24; --amber-bg: rgba(251,191,36,0.10); --amber-br: rgba(251,191,36,0.30);
+    --red: #f87171; --red-bg: rgba(248,113,113,0.10); --red-br: rgba(248,113,113,0.30);
+    --purple: #a78bfa; --purple-bg: rgba(167,139,250,0.10); --purple-br: rgba(167,139,250,0.30);
+    --teal: #2dd4bf; --teal-bg: rgba(45,212,191,0.10); --teal-br: rgba(45,212,191,0.30);
+    --pink: #f472b6; --pink-bg: rgba(244,114,182,0.10); --pink-br: rgba(244,114,182,0.30);
+    --radius-sm: 6px;
+    --font: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+
+  .top-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(11,14,20,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; height: 56px; display: flex; align-items: center; gap: 1rem; }
+  .logo { font-weight: 700; font-size: 14px; white-space: nowrap; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link { padding: 6px 14px; border-radius: 18px; font-size: 12px; font-weight: 500; color: var(--text-2); cursor: pointer; white-space: nowrap; transition: all 0.15s; border: 1px solid transparent; }
+  .nav-link:hover { color: var(--text); background: var(--bg-card); }
+  .nav-link.active { color: var(--accent); background: var(--accent-bg); border-color: var(--accent-br); }
+
+  main { max-width: 1200px; margin: 0 auto; padding: 80px 1.5rem 4rem; }
+
+  .hero { padding: 1.25rem 0; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .hero h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 0.3rem; }
+  .hero h1 span { color: var(--accent); }
+  .hero .meta { font-size: 10px; color: var(--text-m); font-family: var(--mono); letter-spacing: 0.5px; }
+
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .section-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 0 0 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+
+  h2 { font-size: 18px; font-weight: 600; margin: 1.75rem 0 0.5rem; letter-spacing: -0.3px; }
+  h2:first-of-type { margin-top: 0; }
+  h3 { font-size: 14px; font-weight: 600; margin: 1.25rem 0 0.4rem; color: var(--text); }
+  p { font-size: 12px; color: var(--text-2); margin-bottom: 0.5rem; line-height: 1.5; }
+  strong { color: var(--text); font-weight: 600; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1rem; }
+  .stat-row.s5 { grid-template-columns: repeat(5, 1fr); }
+  .stat-row.s3 { grid-template-columns: repeat(3, 1fr); }
+  .stat-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; border-top: 3px solid var(--border); cursor: pointer; transition: all 0.15s; position: relative; }
+  .stat-box:hover { background: var(--bg-card-h); border-color: var(--border-l); }
+  .stat-box.active { background: var(--bg-card-h); border-color: var(--accent); }
+  .stat-box.red { border-top-color: var(--red); }
+  .stat-box.amber { border-top-color: var(--amber); }
+  .stat-box.green { border-top-color: var(--green); }
+  .stat-box.blue { border-top-color: var(--accent); }
+  .stat-box.purple { border-top-color: var(--purple); }
+  .stat-box.teal { border-top-color: var(--teal); }
+  .stat-box.pink { border-top-color: var(--pink); }
+  .stat-num { font-size: 26px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; line-height: 1; }
+  .stat-label { font-size: 11px; color: var(--text-2); margin-top: 6px; line-height: 1.3; }
+  .stat-hint { font-size: 9px; color: var(--accent); margin-top: 6px; font-family: var(--mono); letter-spacing: 0.5px; text-transform: uppercase; }
+
+  .expand-panel { display: none; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; margin: -4px 0 1.25rem; font-size: 12px; color: var(--text-2); line-height: 1.6; }
+  .expand-panel.open { display: block; animation: fadeIn 0.2s ease; }
+  .expand-panel .ep-row { display: grid; grid-template-columns: 220px 1fr; gap: 14px; padding: 6px 0; border-bottom: 1px dotted var(--border); }
+  .expand-panel .ep-row:last-child { border-bottom: none; }
+  .expand-panel .ep-region { font-size: 11px; font-weight: 600; color: var(--text); }
+  .expand-panel .ep-region .ep-count { color: var(--accent); font-family: var(--mono); font-size: 10px; margin-left: 4px; }
+  .expand-panel .ep-list { color: var(--text-2); font-size: 11.5px; }
+
+  .ctable { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 0.5rem 0 1.25rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  .ctable th { text-align: left; padding: 9px 12px; background: var(--bg-surface); color: var(--text-m); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); font-family: var(--mono); }
+  .ctable td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; line-height: 1.5; }
+  .ctable tr:last-child td { border-bottom: none; }
+  .ctable td.country, .ctable td strong, .ctable td.label { color: var(--text); font-weight: 600; }
+  .ctable td.cn { text-align: center; white-space: nowrap; }
+  .ctable td.want { color: var(--text); }
+  .ctable td.why { color: var(--text-2); font-size: 11.5px; }
+  .ctable td.p1col { color: var(--red); font-weight: 500; }
+  .ctable td.p2col { color: var(--amber); font-weight: 500; }
+  .ctable td.p3col { color: var(--teal); font-weight: 500; }
+  .ctable tr:hover td { background: rgba(91,141,239,0.03); }
+  .ctable th.do { color: var(--accent); }
+  .ctable th.p1head { color: var(--red); }
+  .ctable th.p2head { color: var(--amber); }
+  .ctable th.p3head { color: var(--teal); }
+  .ctable a { color: var(--accent); text-decoration: none; padding: 1px 3px; border-radius: 3px; border-bottom: 1px dotted rgba(91,141,239,0.35); transition: all 0.15s; }
+  .ctable a:hover { color: var(--text); background: var(--accent-bg); border-bottom-color: var(--accent); }
+
+  .pri { display: inline-block; width: 20px; height: 20px; border-radius: 50%; text-align: center; line-height: 20px; font-size: 10px; font-weight: 700; font-family: var(--mono); color: white; }
+  .pri.p1 { background: var(--red); }
+  .pri.p2 { background: var(--amber); color: #1a1a1a; }
+  .pri.p3 { background: var(--teal); }
+
+  .badge { font-size: 9.5px; padding: 2px 7px; border-radius: 10px; font-weight: 500; display: inline-block; white-space: nowrap; font-family: var(--mono); letter-spacing: 0.3px; margin-right: 4px; margin-bottom: 4px; }
+  .badge.blue { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-br); }
+  .badge.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-br); }
+  .badge.amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-br); }
+  .badge.red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-br); }
+  .badge.purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-br); }
+  .badge.teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-br); }
+
+  /* CLUSTER CARDS */
+  .cluster-help { background: var(--accent-bg); border: 1px solid var(--accent-br); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 12px; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .cluster-help-icon { font-size: 14px; }
+  .cluster-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 6px; overflow: hidden; transition: border-color 0.15s; }
+  .cluster-card:hover { border-color: var(--border-l); }
+  .cluster-card.open { border-color: var(--accent); }
+  .cluster-header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; transition: background 0.15s; user-select: none; }
+  .cluster-header:hover { background: var(--bg-card-h); }
+  .cluster-num { background: var(--accent-bg); color: var(--accent); width: 26px; height: 26px; border-radius: 50%; text-align: center; line-height: 26px; font-size: 11px; font-weight: 700; flex-shrink: 0; font-family: var(--mono); }
+  .cluster-name { font-size: 13.5px; font-weight: 600; color: var(--text); flex: 1; letter-spacing: -0.2px; }
+  .cluster-meta { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+  .cluster-topic-count { background: var(--bg-surface); color: var(--text-2); padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 500; border: 1px solid var(--border); font-family: var(--mono); }
+  .cluster-card.open .cluster-topic-count { background: var(--accent-bg); color: var(--accent); border-color: var(--accent-br); }
+  .cluster-toggle { width: 24px; height: 24px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; color: var(--text-2); flex-shrink: 0; transition: all 0.2s; line-height: 1; }
+  .cluster-card.open .cluster-toggle { background: var(--accent); color: white; border-color: var(--accent); transform: rotate(45deg); }
+  .cluster-body { display: none; padding: 14px 16px 16px 54px; border-top: 1px solid var(--border); background: var(--bg-surface); cursor: text; user-select: text; }
+  .cluster-card.open .cluster-body { display: block; animation: fadeIn 0.2s ease; }
+  .cluster-topics { list-style: none; padding: 0; margin: 0; }
+  .cluster-topics li { padding: 5px 0 5px 16px; position: relative; font-size: 12.5px; color: var(--text-2); line-height: 1.5; user-select: text; cursor: text; }
+  .cluster-topics li:before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 5px; }
+
+  @media (max-width: 900px) {
+    .stat-row, .stat-row.s5, .stat-row.s3 { grid-template-columns: repeat(2, 1fr); }
+    .expand-panel .ep-row { grid-template-columns: 1fr; gap: 4px; }
+    main { padding: 72px 1rem 3rem; }
+    .top-bar { padding: 0 1rem; }
+    .cluster-body { padding-left: 16px; }
+  }
+  @media print {
+    .top-bar { display: none; } main { padding-top: 0; }
+    .section { display: block !important; page-break-after: always; }
+    .expand-panel { display: block !important; }
+    .cluster-card .cluster-body { display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="logo">Edstellar <span>Off-Page Activity Plan</span></div>
+  <div class="nav-links">
+    <div class="nav-link active" onclick="show('s1',this)">1 · Monthly Targets</div>
+    <div class="nav-link" onclick="show('s2',this)">2 · Daily Cadence</div>
+    <div class="nav-link" onclick="show('s3',this)">3 · Channels &amp; Targets</div>
+    <div class="nav-link" onclick="show('s4',this)">4 · Day-wise Schedule</div>
+  </div>
+</div>
+
+<main>
+
+<div class="hero">
+  <h1>Edstellar <span>Off-Page Activity Plan</span></h1>
+  <div class="meta">REST OF MAY 2026 · 7 WORKING DAYS · MAY 21 – MAY 29 · 4 OFF-PAGE WORKSTREAMS</div>
+</div>
+
+<!-- ═══════════ SLIDE 1 ═══════════ -->
+<div class="section active" id="sec-s1">
+  <div class="section-title">Slide 1 — Monthly Targets &amp; Workstreams</div>
+
+  <h2>The plan at a glance (click any number for the breakdown)</h2>
+  <div class="stat-row">
+    <div class="stat-box blue" onclick="togglePanel('p-daily', this)">
+      <div class="stat-num">40</div>
+      <div class="stat-label">Outreach actions per day</div>
+      <div class="stat-hint">5 listings + 30 HARO + 5 LinkedIn →</div>
+    </div>
+    <div class="stat-box teal" onclick="togglePanel('p-days', this)">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Working days this window</div>
+      <div class="stat-hint">May 21 – May 29 →</div>
+    </div>
+    <div class="stat-box green" onclick="togglePanel('p-touches', this)">
+      <div class="stat-num">280</div>
+      <div class="stat-label">Total outreach touches</div>
+      <div class="stat-hint">35 + 210 + 35 →</div>
+    </div>
+    <div class="stat-box red" onclick="togglePanel('p-links', this)">
+      <div class="stat-num">23</div>
+      <div class="stat-label">Link acquisition targets</div>
+      <div class="stat-hint">20 HARO + 3 freelancer →</div>
+    </div>
+  </div>
+
+  <div class="expand-panel" id="p-daily">
+    <div class="ep-row"><div class="ep-region">L&amp;D platform listings <span class="ep-count">5/day</span></div><div class="ep-list">Submit / claim / optimise 5 directory + review-platform listings per day</div></div>
+    <div class="ep-row"><div class="ep-region">HARO pitches <span class="ep-count">30/day</span></div><div class="ep-list">15 pitches for Edstellar + 15 pitches for Invensis Learning, every working day</div></div>
+    <div class="ep-row"><div class="ep-region">LinkedIn connections <span class="ep-count">5/day</span></div><div class="ep-list">5 new connection requests to top L&amp;D specialists for blog feedback</div></div>
+    <div class="ep-row"><div class="ep-region">Daily total <span class="ep-count">40</span></div><div class="ep-list">Listings + HARO + LinkedIn outreach actions per working day</div></div>
+  </div>
+
+  <div class="expand-panel" id="p-days">
+    <div class="ep-row"><div class="ep-region">Week 1 (partial) <span class="ep-count">2</span></div><div class="ep-list">Thu May 21, Fri May 22</div></div>
+    <div class="ep-row"><div class="ep-region">Week 2 <span class="ep-count">5</span></div><div class="ep-list">Mon May 25, Tue May 26, Wed May 27, Thu May 28, Fri May 29</div></div>
+    <div class="ep-row"><div class="ep-region">Excluded (weekends) <span class="ep-count">4</span></div><div class="ep-list" style="color:var(--text-m);">May 23–24, May 30–31</div></div>
+  </div>
+
+  <div class="expand-panel" id="p-touches">
+    <div class="ep-row"><div class="ep-region">Listings <span class="ep-count">35</span></div><div class="ep-list">5/day × 7 working days</div></div>
+    <div class="ep-row"><div class="ep-region">HARO pitches <span class="ep-count">210</span></div><div class="ep-list">105 Edstellar + 105 Invensis Learning (30/day × 7)</div></div>
+    <div class="ep-row"><div class="ep-region">LinkedIn connections <span class="ep-count">35</span></div><div class="ep-list">5/day × 7 working days</div></div>
+    <div class="ep-row"><div class="ep-region">Freelancer backlink outreach <span class="ep-count">ongoing</span></div><div class="ep-list">Sourcing + briefing toward 3 placed links</div></div>
+  </div>
+
+  <div class="expand-panel" id="p-links">
+    <div class="ep-row"><div class="ep-region">HARO links <span class="ep-count">20</span></div><div class="ep-list">Earned media placements from accepted pitches (Edstellar + Invensis)</div></div>
+    <div class="ep-row"><div class="ep-region">Freelancer L&amp;D links <span class="ep-count">3</span></div><div class="ep-list">Niche-relevant guest posts / niche edits on L&amp;D &amp; HR sites</div></div>
+    <div class="ep-row"><div class="ep-region">Listing citations <span class="ep-count">35</span></div><div class="ep-list">Profile / NAP citations from directories (tracked separately from DR links)</div></div>
+  </div>
+
+  <h2>The four off-page workstreams</h2>
+  <table class="ctable">
+    <thead>
+      <tr><th class="cn">#</th><th class="do">Workstream</th><th>Cadence</th><th class="cn">Month volume</th><th>Primary KPI</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cn"><span class="pri p1">1</span></td>
+        <td class="want">L&amp;D Platform Listings <span class="badge blue">Citations</span></td>
+        <td>5 outreach / day</td>
+        <td class="cn"><strong>35</strong></td>
+        <td class="why">Listings live + verified profiles with consistent NAP</td>
+      </tr>
+      <tr>
+        <td class="cn"><span class="pri p1">2</span></td>
+        <td class="want">HARO Pitches — Edstellar + Invensis <span class="badge red">Earned links</span></td>
+        <td>15 + 15 / day</td>
+        <td class="cn"><strong>210</strong></td>
+        <td class="why">20 links earned this month across both brands</td>
+      </tr>
+      <tr>
+        <td class="cn"><span class="pri p2">3</span></td>
+        <td class="want">Freelancer Backlinks — L&amp;D <span class="badge amber">DR links</span></td>
+        <td>3 / month</td>
+        <td class="cn"><strong>3</strong></td>
+        <td class="why">3 niche-relevant dofollow links placed &amp; indexed</td>
+      </tr>
+      <tr>
+        <td class="cn"><span class="pri p2">4</span></td>
+        <td class="want">LinkedIn Feedback Collection <span class="badge teal">Engagement</span></td>
+        <td>5 connections / day</td>
+        <td class="cn"><strong>35</strong></td>
+        <td class="why">Connections accepted + blog feedback / quotes captured</td>
+      </tr>
+      <tr>
+        <td class="label">Total daily outreach</td>
+        <td class="label"><strong>4 workstreams</strong></td>
+        <td class="label"><strong>40 / day</strong></td>
+        <td class="cn"><strong>280</strong></td>
+        <td class="label"><strong>23 links + 35 citations</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════ SLIDE 2 ═══════════ -->
+<div class="section" id="sec-s2">
+  <div class="section-title">Slide 2 — Daily Cadence</div>
+
+  <h2>What a single working day looks like (click any number)</h2>
+  <div class="stat-row">
+    <div class="stat-box blue" onclick="togglePanel('p-c-list', this)"><div class="stat-num">5</div><div class="stat-label">Listings submitted / optimised</div><div class="stat-hint">~45 min →</div></div>
+    <div class="stat-box red" onclick="togglePanel('p-c-haro', this)"><div class="stat-num">30</div><div class="stat-label">HARO pitches (15 + 15)</div><div class="stat-hint">~2.5 hrs →</div></div>
+    <div class="stat-box teal" onclick="togglePanel('p-c-li', this)"><div class="stat-num">5</div><div class="stat-label">LinkedIn connections</div><div class="stat-hint">~30 min →</div></div>
+    <div class="stat-box amber" onclick="togglePanel('p-c-track', this)"><div class="stat-num">1</div><div class="stat-label">Tracker update + follow-ups</div><div class="stat-hint">end of day →</div></div>
+  </div>
+
+  <div class="expand-panel" id="p-c-list">
+    <div class="ep-row"><div class="ep-region">Goal</div><div class="ep-list">5 new submissions or claim/optimise actions on L&amp;D &amp; B2B directories</div></div>
+    <div class="ep-row"><div class="ep-region">Notes</div><div class="ep-list">Use one master profile doc (logo, boilerplate, NAP, categories, screenshots). Keep the same description to maintain citation consistency.</div></div>
+  </div>
+  <div class="expand-panel" id="p-c-haro">
+    <div class="ep-row"><div class="ep-region">Edstellar</div><div class="ep-list">15 pitches — corporate training, upskilling/reskilling, L&amp;D strategy, future of work, skills gap angles</div></div>
+    <div class="ep-row"><div class="ep-region">Invensis Learning</div><div class="ep-list">15 pitches — certification training (PMP, ITIL, Agile, Six Sigma), project management, quality management angles</div></div>
+    <div class="ep-row"><div class="ep-region">Sources</div><div class="ep-list">Process AM + PM HARO/Connectively/Featured/Qwoted/SourceBottle digests. Pitch within 2 hrs of the digest for best hit rate.</div></div>
+  </div>
+  <div class="expand-panel" id="p-c-li">
+    <div class="ep-row"><div class="ep-region">Goal</div><div class="ep-list">5 personalised connection requests to L&amp;D / HR leaders, referencing a specific Edstellar blog for feedback or a quote</div></div>
+    <div class="ep-row"><div class="ep-region">Notes</div><div class="ep-list">Stay under ~100 invites/week to respect LinkedIn limits. Always add a note; follow up accepted connects 48 hrs later.</div></div>
+  </div>
+  <div class="expand-panel" id="p-c-track">
+    <div class="ep-row"><div class="ep-region">Goal</div><div class="ep-list">Log every pitch/listing/connection in the master tracker; chase pending freelancer placements; flag any live links earned</div></div>
+  </div>
+
+  <h2>Suggested daily time-block</h2>
+  <table class="ctable">
+    <thead><tr><th>Time block</th><th class="do">Activity</th><th class="cn">Volume</th><th>Output</th></tr></thead>
+    <tbody>
+      <tr><td class="country">09:00 – 09:30</td><td class="want">HARO / Connectively AM digest</td><td class="cn">~15</td><td class="why">First-half pitches across both brands while queries are fresh</td></tr>
+      <tr><td class="country">09:30 – 10:15</td><td class="want">Platform listings</td><td class="cn">5</td><td class="why">Submit/claim 5 directory profiles, screenshot for proof</td></tr>
+      <tr><td class="country">10:15 – 10:45</td><td class="want">LinkedIn outreach</td><td class="cn">5</td><td class="why">5 personalised connection requests + accepted-connect follow-ups</td></tr>
+      <tr><td class="country">14:00 – 15:30</td><td class="want">HARO / Connectively PM digest</td><td class="cn">~15</td><td class="why">Second-half pitches; respond to any journalist replies</td></tr>
+      <tr><td class="country">16:00 – 16:30</td><td class="want">Freelancer coordination</td><td class="cn">—</td><td class="why">Brief / review freelancer backlink drafts (toward 3 placements)</td></tr>
+      <tr><td class="country">16:30 – 17:00</td><td class="want">Tracker + reporting</td><td class="cn">—</td><td class="why">Update sheet, log links earned, plan tomorrow's targets</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Weekly rollup</h2>
+  <table class="ctable">
+    <thead><tr><th>Workstream</th><th class="cn">Per day</th><th class="cn">Full week (5d)</th><th class="cn">This window (7d)</th></tr></thead>
+    <tbody>
+      <tr><td class="country">Platform listings</td><td class="cn">5</td><td class="cn">25</td><td class="cn"><strong>35</strong></td></tr>
+      <tr><td class="country">HARO pitches (Edstellar)</td><td class="cn">15</td><td class="cn">75</td><td class="cn"><strong>105</strong></td></tr>
+      <tr><td class="country">HARO pitches (Invensis)</td><td class="cn">15</td><td class="cn">75</td><td class="cn"><strong>105</strong></td></tr>
+      <tr><td class="country">LinkedIn connections</td><td class="cn">5</td><td class="cn">25</td><td class="cn"><strong>35</strong></td></tr>
+      <tr><td class="label">Total touches</td><td class="cn"><strong>40</strong></td><td class="cn"><strong>200</strong></td><td class="cn"><strong>280</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════ SLIDE 3 ═══════════ -->
+<div class="section" id="sec-s3">
+  <div class="section-title">Slide 3 — Channels &amp; Targets</div>
+
+  <div class="cluster-help">
+    <span class="cluster-help-icon">↓</span>
+    <span><strong>Click any card below</strong> to see the platforms, pitch angles, and target personas inside each workstream.</span>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header" onclick="toggleCluster(this)">
+      <div class="cluster-num">1</div>
+      <div class="cluster-name">L&amp;D &amp; B2B Listing Platforms (5/day pool)</div>
+      <div class="cluster-meta"><span class="badge blue">Citations</span><span class="cluster-topic-count">35 platforms</span></div>
+      <div class="cluster-toggle">+</div>
+    </div>
+    <div class="cluster-body">
+      <ul class="cluster-topics">
+        <li><strong>Review platforms:</strong> G2, Capterra, GetApp, Software Advice, TrustRadius, SaaSworthy, Crozdesk, SourceForge, Slashdot, Product Hunt</li>
+        <li><strong>Agency / services directories:</strong> Clutch, GoodFirms, DesignRush, The Manifest, Sortlist, UpCity</li>
+        <li><strong>Training &amp; L&amp;D specific:</strong> Training Industry, eLearning Industry, Findcourses, Coursalytics, EdSurge</li>
+        <li><strong>Business / startup:</strong> Crunchbase, F6S, Trustpilot, Glassdoor, AmbitionBox</li>
+        <li><strong>Local &amp; general (NAP citations):</strong> Google Business Profile, Bing Places, Yelp, Justdial, Sulekha, Hotfrog, Brownbook, Yellow Pages, Cylex</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header" onclick="toggleCluster(this)">
+      <div class="cluster-num">2</div>
+      <div class="cluster-name">HARO — Edstellar pitch angles (15/day)</div>
+      <div class="cluster-meta"><span class="badge red">Earned links</span><span class="cluster-topic-count">8 angles</span></div>
+      <div class="cluster-toggle">+</div>
+    </div>
+    <div class="cluster-body">
+      <ul class="cluster-topics">
+        <li>Corporate training trends &amp; spend benchmarks</li>
+        <li>Upskilling / reskilling the workforce for AI</li>
+        <li>Skills gap &amp; future-of-work commentary</li>
+        <li>L&amp;D strategy, learning culture, training ROI</li>
+        <li>Leadership development &amp; manager enablement</li>
+        <li>Employee engagement &amp; retention through learning</li>
+        <li>Instructor-led vs digital / blended training</li>
+        <li>HR tech, skills intelligence &amp; talent development</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header" onclick="toggleCluster(this)">
+      <div class="cluster-num">3</div>
+      <div class="cluster-name">HARO — Invensis Learning pitch angles (15/day)</div>
+      <div class="cluster-meta"><span class="badge red">Earned links</span><span class="cluster-topic-count">8 angles</span></div>
+      <div class="cluster-toggle">+</div>
+    </div>
+    <div class="cluster-body">
+      <ul class="cluster-topics">
+        <li>Project management certification (PMP, PRINCE2, CAPM)</li>
+        <li>Agile &amp; Scrum adoption in enterprises</li>
+        <li>ITIL &amp; IT service management</li>
+        <li>Six Sigma, Lean &amp; quality management</li>
+        <li>DevOps culture &amp; certification value</li>
+        <li>Career growth via professional certifications</li>
+        <li>Certification ROI &amp; salary impact data</li>
+        <li>Exam prep tips &amp; expert how-to commentary</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header" onclick="toggleCluster(this)">
+      <div class="cluster-num">4</div>
+      <div class="cluster-name">Freelancer Backlinks — L&amp;D (3/month)</div>
+      <div class="cluster-meta"><span class="badge amber">DR links</span><span class="cluster-topic-count">5 steps</span></div>
+      <div class="cluster-toggle">+</div>
+    </div>
+    <div class="cluster-body">
+      <ul class="cluster-topics">
+        <li>Source freelancers / sites via Fiverr, Upwork &amp; vetted outreach lists (HR / L&amp;D / business niches)</li>
+        <li>Vet for niche relevance, DR/DA, real organic traffic, dofollow &amp; no link-farm footprint</li>
+        <li>Brief: 3 target URLs (blog pillars), anchor mix, and approved talking points</li>
+        <li>Review drafts for editorial quality before placement</li>
+        <li>Confirm links are live, indexed &amp; logged — target 3 placed this month</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header" onclick="toggleCluster(this)">
+      <div class="cluster-num">5</div>
+      <div class="cluster-name">LinkedIn — Top L&amp;D Specialists to Target (5/day)</div>
+      <div class="cluster-meta"><span class="badge teal">Engagement</span><span class="cluster-topic-count">8 personas</span></div>
+      <div class="cluster-toggle">+</div>
+    </div>
+    <div class="cluster-body">
+      <ul class="cluster-topics">
+        <li>Chief Learning Officers (CLO) &amp; Heads of L&amp;D</li>
+        <li>CHROs &amp; VPs of People / Talent</li>
+        <li>L&amp;D Managers &amp; Learning Experience leads</li>
+        <li>Heads of Talent Development / Capability</li>
+        <li>Corporate Training Managers</li>
+        <li>Organisational Development (OD) specialists</li>
+        <li>HR Business Partners with L&amp;D remit</li>
+        <li>L&amp;D consultants, coaches &amp; LinkedIn creators</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Outreach note template (LinkedIn)</h2>
+  <p>"Hi [Name] — I lead content at Edstellar. We just published <em>[blog title]</em> on [topic] and I'd value a 1-line view from an L&amp;D leader like you. Open to a quick connect? Happy to share the piece + credit any quote."</p>
+</div>
+
+<!-- ═══════════ SLIDE 4 ═══════════ -->
+<div class="section" id="sec-s4">
+  <div class="section-title">Slide 4 — Day-wise Schedule (May 21 – May 29)</div>
+
+  <h2>Status</h2>
+  <div class="stat-row">
+    <div class="stat-box red"><div class="stat-num">210</div><div class="stat-label">HARO pitches scheduled</div><div class="stat-hint">Priority 1 · 20 links target</div></div>
+    <div class="stat-box blue"><div class="stat-num">35</div><div class="stat-label">Listings scheduled</div><div class="stat-hint">Priority 1 · 5/day</div></div>
+    <div class="stat-box teal"><div class="stat-num">35</div><div class="stat-label">LinkedIn connections</div><div class="stat-hint">Priority 2 · 5/day</div></div>
+    <div class="stat-box amber"><div class="stat-num">3</div><div class="stat-label">Freelancer links to place</div><div class="stat-hint">Priority 2 · monthly</div></div>
+  </div>
+
+  <h2>Day-wise publishing schedule</h2>
+  <p>7 working days. Each day = 5 listings + 30 HARO pitches (15 Edstellar + 15 Invensis) + 5 LinkedIn connections. Freelancer backlink milestones are flagged in the final column.</p>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th class="cn">Day</th>
+        <th>Date</th>
+        <th class="do">Listings focus (5)</th>
+        <th class="do">HARO focus (30)</th>
+        <th class="do">LinkedIn &amp; Backlinks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cn"><strong>1</strong></td>
+        <td class="country">May 21 (Thu)</td>
+        <td>G2, Capterra, GetApp, Software Advice, TrustRadius</td>
+        <td>Edstellar: corporate training trends · Invensis: PMP / project mgmt</td>
+        <td>5 CLOs / Heads of L&amp;D · <span class="badge amber">Backlink: source freelancers</span></td>
+      </tr>
+      <tr>
+        <td class="cn"><strong>2</strong></td>
+        <td class="country">May 22 (Fri)</td>
+        <td>SaaSworthy, Crozdesk, SourceForge, Slashdot, Product Hunt</td>
+        <td>Edstellar: upskilling for AI · Invensis: Agile &amp; Scrum</td>
+        <td>5 CHROs / VP People · <span class="badge amber">Backlink: shortlist + vet sites</span></td>
+      </tr>
+      <tr>
+        <td class="cn"><strong>3</strong></td>
+        <td class="country">May 25 (Mon)</td>
+        <td>Clutch, GoodFirms, DesignRush, The Manifest, Sortlist</td>
+        <td>Edstellar: skills gap / future of work · Invensis: ITIL &amp; ITSM</td>
+        <td>5 L&amp;D Managers · <span class="badge amber">Backlink #1: brief + assign</span></td>
+      </tr>
+      <tr>
+        <td class="cn"><strong>4</strong></td>
+        <td class="country">May 26 (Tue)</td>
+        <td>UpCity, Training Industry, eLearning Industry, Findcourses, Coursalytics</td>
+        <td>Edstellar: L&amp;D strategy / training ROI · Invensis: Six Sigma &amp; quality</td>
+        <td>5 Heads of Talent Dev · <span class="badge amber">Backlink #2: brief + assign</span></td>
+      </tr>
+      <tr>
+        <td class="cn"><strong>5</strong></td>
+        <td class="country">May 27 (Wed)</td>
+        <td>EdSurge, Crunchbase, F6S, Google Business Profile, Bing Places</td>
+        <td>Edstellar: leadership development · Invensis: DevOps certification</td>
+        <td>5 Corporate Training Mgrs · <span class="badge amber">Backlink: review drafts</span></td>
+      </tr>
+      <tr>
+        <td class="cn"><strong>6</strong></td>
+        <td class="country">May 28 (Thu)</td>
+        <td>Yelp, Justdial, Sulekha, Hotfrog, Brownbook</td>
+        <td>Edstellar: engagement &amp; retention · Invensis: certification ROI</td>
+        <td>5 OD specialists / HRBPs · <span class="badge amber">Backlink #3: brief + assign</span></td>
+      </tr>
+      <tr>
+        <td class="cn"><strong>7</strong></td>
+        <td class="country">May 29 (Fri)</td>
+        <td>Yellow Pages, Cylex, Trustpilot, Glassdoor, AmbitionBox</td>
+        <td>Edstellar: HR tech / skills intelligence · Invensis: exam-prep how-tos</td>
+        <td>5 L&amp;D consultants / creators · <span class="badge amber">Backlinks: confirm live + report</span></td>
+      </tr>
+      <tr>
+        <td class="label cn"><strong>Total</strong></td>
+        <td class="label"><strong>7 days</strong></td>
+        <td class="label"><strong>35 listings</strong></td>
+        <td class="label"><strong>210 pitches → 20 links</strong></td>
+        <td class="label"><strong>35 connects · 3 links</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</main>
+
+<script>
+  function show(id, el) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('sec-' + id).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.expand-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.stat-box').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.cluster-card').forEach(c => c.classList.remove('open'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function togglePanel(id, btn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const wasOpen = el.classList.contains('open');
+    document.querySelectorAll('.expand-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.stat-box').forEach(b => b.classList.remove('active'));
+    if (!wasOpen) {
+      el.classList.add('open');
+      if (btn) btn.classList.add('active');
+    }
+  }
+
+  function toggleCluster(headerEl) {
+    const card = headerEl.closest('.cluster-card');
+    if (!card) return;
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.cluster-card').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
